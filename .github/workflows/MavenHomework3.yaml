@@ -54,11 +54,12 @@ jobs:
           WS_USERKEY: ${{ secrets.MEND_USER_KEY }}
           WS_WSS_URL: ${{ secrets.WS_WSS_URL }}
           WS_PRODUCTNAME: Homework3
-          WS_PROJECTNAME: UAMaven
+          WS_PROJECTNAME: UAMavenRedo
           WS_LOG_LEVEL: DEBUG
         run: java -jar UA.jar
 
-      
+      - name: Build Maven for CLI
+        run: mvn clean install -DskipTests
 
       - name: Scan with CLI
         env:
@@ -67,7 +68,7 @@ jobs:
           MEND_EMAIL: ${{ secrets.MEND_EMAIL}}
           MEND_LOG_LEVEL: DEBUG
         run: |
-          mend dep --update --scope "Homework3//CLIMaven" --non-interactive -e
+          mend dep --update --scope "Homework3//CLIMavenBuilt" --non-interactive -e
         continue-on-error: true
       
       - name: Printing CLI logs
