@@ -53,8 +53,8 @@ jobs:
           WS_APIKEY: ${{ secrets.APIKEY }}
           WS_USERKEY: ${{ secrets.MEND_USER_KEY }}
           WS_WSS_URL: ${{ secrets.WS_WSS_URL }}
-          WS_PRODUCTNAME: Homework3
-          WS_PROJECTNAME: UAMavenRedo
+          WS_PRODUCTNAME: OSSTestUA
+          WS_PROJECTNAME: UAWebGoat
           WS_LOG_LEVEL: DEBUG
         run: java -jar UA.jar
 
@@ -68,7 +68,7 @@ jobs:
           MEND_EMAIL: ${{ secrets.MEND_EMAIL}}
           MEND_LOG_LEVEL: DEBUG
         run: |
-          mend dep --update --scope "Homework3//CLIMavenBuilt" --non-interactive -e
+          mend dep --update --scope "OSSTestCLI//CLIWebGoat" --non-interactive -e
         continue-on-error: true
       
       - name: Printing CLI logs
